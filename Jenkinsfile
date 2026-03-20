@@ -1,8 +1,8 @@
-pipeline {
+ pipeline {
     agent any
 
     environment {
-        DOTNET_SDK = 'dotnet'  // adjust if your .NET path is different
+        DOTNET_SDK = 'dotnet'  // make sure 'dotnet' is in PATH
     }
 
     stages {
@@ -14,19 +14,19 @@ pipeline {
 
         stage('Restore') {
             steps {
-                sh "${DOTNET_SDK} restore"
+                bat "${DOTNET_SDK} restore"
             }
         }
 
         stage('Build') {
             steps {
-                sh "${DOTNET_SDK} build --configuration Debug"
+                bat "${DOTNET_SDK} build --configuration Debug"
             }
         }
 
         stage('Run') {
             steps {
-                sh "${DOTNET_SDK} run --project MyApp.csproj"
+                bat "${DOTNET_SDK} run --project MyApp.csproj"
             }
         }
     }
