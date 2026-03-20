@@ -6,6 +6,12 @@
     }
 
     stages {
+      stage('Check dotnet') {
+            steps {
+                bat 'dotnet --version'
+            }
+        }
+     
         stage('Checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/axelma199/myapp.git'
